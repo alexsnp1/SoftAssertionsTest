@@ -15,7 +15,6 @@ public class SoftAssertionsTest {
     static void beforeAll() {
         Configuration.browserSize = "1600x900";
         Configuration.pageLoadStrategy = "eager";
-        Configuration.holdBrowserOpen = true;
     }
 
     @Test
