@@ -18,12 +18,30 @@ public class SoftAssertionsTest {
     }
 
     @Test
+    
     void softAssertionsTest() {
         open("https://github.com/selenide/selenide");
         $("#wiki-tab").click();
         $$("ul").findBy(text("Soft assertions")).shouldBe(visible);
         $$("ul a").findBy(text("Soft assertions")).click();
-        $(".markdown-body").$(withText("JUnit5")).shouldBe(visible);
+        //$(".markdown-body").$(withText("JUnit5")).shouldBe(visible);
+        String expectedCode = """
+                Using JUnit5 extend test class:
+                @ExtendWith({SoftAssertsExtension.class})
+                class Tests {
+                  @Test
+                  void test() {
+                    Configuration.assertionMode = SOFT;
+                    open("page.html");
+                
+                    $("#first").should(visible).click();
+                    $("#second").should(visible).click();
+                  }
+                }
+               """;
+        //$(".markdown-body").$(withText(expectedCode)).shouldBe(visible);
+        $("div.markdown-body").shouldHave(text(expectedCode));
+
 
 
     }
