@@ -39,7 +39,6 @@ public class SoftAssertionsTest {
                   }
                 }
                """;
-        //$(".markdown-body").$(withText(expectedCode)).shouldBe(visible);
         $("div.markdown-body").shouldHave(text(expectedCode));
 
 
