@@ -22,9 +22,13 @@ public class SoftAssertionsTest {
     void softAssertionsTest() {
         open("https://github.com/selenide/selenide");
         $("#wiki-tab").click();
+
+        //Убедиться, что в списке страниц (Pages) есть страница SoftAssertions
         $$("ul").findBy(text("Soft assertions")).shouldBe(visible);
+        //кликнуть по ней
         $$("ul a").findBy(text("Soft assertions")).click();
         //$(".markdown-body").$(withText("JUnit5")).shouldBe(visible);
+        //проверить что внутри есть пример кода для JUnit5
         String expectedCode = """
                 Using JUnit5 extend test class:
                 @ExtendWith({SoftAssertsExtension.class})
